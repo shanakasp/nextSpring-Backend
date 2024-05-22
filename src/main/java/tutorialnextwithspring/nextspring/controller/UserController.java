@@ -23,7 +23,7 @@ import tutorialnextwithspring.nextspring.service.UserService;
 
 
 @RestController
-@RequestMapping("/api/V1/")
+@RequestMapping("/api/V1")
 
 public class UserController {
 
