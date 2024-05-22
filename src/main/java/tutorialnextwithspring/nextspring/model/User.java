@@ -1,4 +1,4 @@
-package tutorialnextwithspring.model;
+package tutorialnextwithspring.nextspring.model;
 
 public class User {
     private long id;

@@ -1,4 +1,4 @@
-package tutorialnextwithspring.service;
+package tutorialnextwithspring.nextspring.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import tutorialnextwithspring.entity.UserEntity;
-import tutorialnextwithspring.model.User;
-import tutorialnextwithspring.repository.UserRepository;
+import tutorialnextwithspring.nextspring.entity.UserEntity;
+import tutorialnextwithspring.nextspring.model.User;
+import tutorialnextwithspring.nextspring.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,7 +48,32 @@ public class UserServiceImpl implements UserService {
        BeanUtils.copyProperties(userEntity, user);
        return user;
     }
+
+    @Override
+    public boolean deleteUser(Long id) {
+       UserEntity user = userRepository.findById(id).get();
+       userRepository.delete(user);
+       return true;
+    }
+
+  
+    @Override
+    public User updateUser(Long id, User user) {
+        UserEntity userEntity = userRepository.findById(id)
+                .orElseThrow();
+        
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setLastName(user.getLastName());
+        userEntity.setEmailId(user.getEmailId());
+        userRepository.save(userEntity);
+        
+        User updatedUser = new User();
+        BeanUtils.copyProperties(userEntity, updatedUser);
+        return updatedUser;
+    }
     
+
+
     
 
 }

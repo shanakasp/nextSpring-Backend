@@ -1,4 +1,4 @@
-package tutorialnextwithspring.entity;
+package tutorialnextwithspring.nextspring.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
