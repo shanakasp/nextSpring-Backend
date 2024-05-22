@@ -24,6 +24,9 @@ public class UserEntity {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    public UserEntity() {
+        //TODO Auto-generated constructor stub
+    }
     // Getter and Setter for id
     public long getId() {
         return id;
