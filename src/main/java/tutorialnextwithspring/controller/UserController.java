@@ -2,7 +2,9 @@ package tutorialnextwithspring.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tutorialnextwithspring.model.User;
 import tutorialnextwithspring.service.UserService;
+
 
 
 
@@ -35,5 +38,13 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+    
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
+       User user = null;
+       user = userService.getUserById(id);
+       return  ResponseEntity.ok(user);
+    }
+    
     
 }
